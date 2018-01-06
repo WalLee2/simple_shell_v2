@@ -8,13 +8,34 @@
  */
 int _strcmp(const char *s1, const char *s2)
 {
-	unsigned int i;
+	unsigned int i, j;
 
-	for (i = 0; s1[i] != '\0'; i++)
+	if (s1 == NULL || s2 == NULL)
 	{
-		if (s1[i] != s2[i])
+		return (0);
+	}
+	for (i = 0; s1[i] != '\0'; i++)
+		;
+	for (j = 0; s2[j] != '\0'; j++)
+		;
+	if (i >= j)
+	{
+		for (i = 0; s1[i] != '\0'; i++)
 		{
-			return (0);
+			if (s1[i] != s2[i])
+			{
+				return (0);
+			}
+		}
+	}
+	else if (i < j)
+	{
+		for (j = 0; s2[j] != '\0'; j++)
+		{
+			if (s2[j] != s1[j])
+			{
+				return (0);
+			}
 		}
 	}
 	return (1);
@@ -29,11 +50,14 @@ void _strcpy_one_src(char *dest, char *src)
 {
 	int i;
 
-	for (i = 0; src[i] != '\0'; i++)
+	if (src != NULL && dest != NULL)
 	{
-		dest[i] = src[i];
+		for (i = 0; src[i] != '\0'; i++)
+		{
+			dest[i] = src[i];
+		}
+		dest[i] = '\0';
 	}
-	dest[i] = '\0';
 }
 
 /**
@@ -47,15 +71,18 @@ void _strcpy_mult_src(char *dest, char *src1, char *src2)
 {
 	int i, j;
 
-	for (i = 0; src1[i] != '\0'; i++)
+	if (src1 != NULL && src2 != NULL && dest != NULL)
 	{
-		dest[i] = src1[i];
+		for (i = 0; src1[i] != '\0'; i++)
+		{
+			dest[i] = src1[i];
+		}
+		dest[i] = '/';
+		i++;
+		for (j = 0; src2[j] != '\0'; i++, j++)
+		{
+			dest[i] = src2[j];
+		}
+		dest[i] = '\0';
 	}
-	dest[i] = '/';
-	i++;
-	for (j = 0; src2[j] != '\0'; i++, j++)
-	{
-		dest[i] = src2[j];
-	}
-	dest[i] = '\0';
 }
