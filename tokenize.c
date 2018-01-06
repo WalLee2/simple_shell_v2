@@ -39,7 +39,7 @@ int tokenize_insert(global_t *gst)
 	}
 	for (i = 0; token != NULL; i++)
 	{
-		gst->usrIn[i] = token;
+		gst->usrin[i] = token;
 		token = strtok(NULL, "\n\t ");
 	}
 	return (i);

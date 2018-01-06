@@ -38,7 +38,7 @@ typedef struct list_s
 typedef struct global_s
 {
 	list_t *node;
-	char **usrIn;
+	char **usrin;
 	char *buf;
 	size_t bufsz;
 	int num_tokens;
@@ -66,7 +66,7 @@ void _strcpy_mult_src(char *dest, char *src1, char *src2);
 void _strcpy_one_src(char *dest, char *src);
 
 /** error handling **/
-void error_usrIn(global_t *gst);
+void error_usrin(global_t *gst);
 void error_PATH(global_t *gst);
 void error_ll(global_t *gst);
 

@@ -70,7 +70,7 @@ int find_command_execute(global_t *gst, char *command, int len)
 			_strcpy_mult_src(new, current->str, command);
 			if (stat(new, &st) == 0)
 			{
-				execute(new, gst->usrIn);
+				execute(new, gst->usrin);
 				free(new);
 				return (1);
 			}
@@ -84,7 +84,7 @@ int find_command_execute(global_t *gst, char *command, int len)
 		free_chunk(gst);
 		return (0);
 	}
-	execute(command, gst->usrIn);
+	execute(command, gst->usrin);
 	return (1);
 }
 /**
@@ -101,12 +101,12 @@ int append_execute(global_t *gst)
 	char *command;
 	int len, status;
 
-	if (gst->usrIn[0] == NULL)
+	if (gst->usrin[0] == NULL)
 	{
-		perror("gst->usrIn[0] == NULL!\n");
+		perror("gst->usrin[0] == NULL!\n");
 		free_all(gst);
 	}
-	command = gst->usrIn[0];
+	command = gst->usrin[0];
 	for (len = 0; command[len] != '\0'; len++)
 		;
 	len++;

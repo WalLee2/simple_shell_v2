@@ -8,7 +8,7 @@
  */
 void free_chunk(global_t *gst)
 {
-	free(gst->usrIn);
+	free(gst->usrin);
 	free(gst->buf);
 	gst->buf = NULL;
 	gst->num_tokens = 0;

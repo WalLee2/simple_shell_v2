@@ -32,16 +32,16 @@ int main(void)
 		write(STDOUT_FILENO, "$ ", 2);
 		if (getline(&gst->buf, &gst->bufsz, stdin) != -1)
 		{
-			gst->usrIn = malloc(gst->bufsz * sizeof(*gst->usrIn));
-			if (gst->usrIn == NULL)
+			gst->usrin = malloc(gst->bufsz * sizeof(*gst->usrin));
+			if (gst->usrin == NULL)
 			{
-				error_usrIn(gst);
+				error_usrin(gst);
 			}
-			_memset(gst->usrIn, 0, gst->bufsz);
+			_memset(gst->usrin, 0, gst->bufsz);
 			gst->num_tokens = tokenize_insert(gst);
 			if (gst->num_tokens == -1 || gst->num_tokens == 0)
 			{
-				free(gst->usrIn);
+				free(gst->usrin);
 				continue;
 			}
 			if (gst->node == NULL)
